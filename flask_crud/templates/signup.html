@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="signtitle">sign up with our platform</div>
+    <div>
+      <form action=""  method="POST">
+         <div>
+            <label for="Firstname">Firstname</label>
+            <input type="text"  name="Firstname">
+         </div>
+         <div>
+            <label for="Lastname">Lastname</label>
+            <input type="text"  name="Lastname">
+         </div>
+         <div>
+            <label for="Password">Password</label>
+            <input type="password" name="Password">
+         </div>
+         <div>
+            <label for="Email">Email</label>
+            <input type="text=" name="Email">
+         </div>
+         <div>
+            <input type="submit">
+         </div>
+      </form>
+      <div>
+        <span>already have an account ? <a href="{{url_for("signin.html")}}"></a></span>
+      </div>
+    </div>
+</body>
+</html>

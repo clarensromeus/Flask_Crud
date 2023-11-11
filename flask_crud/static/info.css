@@ -1,0 +1,12 @@
+.messagebox {
+    padding: 9;
+    background-color: azure;
+    display: flex;
+    flex-direction: center;
+}
+
+.product {
+    font-variant: small-caps;
+    font-size: medium;
+    font-weight: 300;
+}

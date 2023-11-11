@@ -1,0 +1,10 @@
+body {
+    padding: 4px;
+    margin: 0px;
+}
+
+.navbar {
+    display: flex;
+    gap: 6px;
+    padding: 3px;
+}

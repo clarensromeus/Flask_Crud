@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+{% block link %}<link rel="stylesheet" href="{{ url_for('static', filename='product.css') }}">{% endblock link %}
+<title>{% block title %} products {% endblock title %} </title>
+
+{% block content %} 
+   <div>
+     <form action="products" method="POST">
+        <div class="productform">
+            <div><input type="text" name="ProductName" placeholder="productname"></div>
+            <div><input type="text" name="Price" placeholder="price"></div>
+            <div><input type="submit"></div>
+        </div>
+      
+     </form>
+   </div>
+   <div  style="padding-top: 10px; width: 300px;">
+      <div>
+         span all products
+      </div>
+      <div style="padding-top: 4px; width: inherit;" >
+         <table>
+            <tr>
+               <th>id</th>
+               <th>Product name</th>
+               <th>Price</th>
+               <th>Actions</th>
+            </tr>
+            {% for product in products %}
+               <tr>
+                  <td> {{ product.id }} </td>
+                  <td> {{ product.ProductName }} </td>
+                  <td> {{ product.Price }} </td>
+                  <td>
+                     <div><a href="/product/delete/{{ product.id }}">delete{{ product.id }} </a></div>
+                     <div><a href="/product/update/{{ product.id }}">update</a></div>
+                  </td>
+               </tr>
+            {% endfor %}
+         </table>
+      </div>
+   </div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+ 
+{% block link %} 
+ <link rel="stylesheet" href="{{ url_for('static', filename='users.css') }}">
+{% endblock link %} 
+<title> {% block title %} users {% endblock title %} </title>
+
+{% block content %} 
+   <div>all users</div>
+   <div>
+    <table>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td> {{ user.Firstname }} </td>
+            <td> {{ user.Lastname }} </td>
+            <td> {{ user.Email }} </td>
+        </tr>
+        {% endfor %}
+    </table>
+   </div>
+{% endblock content %}

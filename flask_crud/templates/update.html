@@ -1,0 +1,13 @@
+{% block title %} user {% endblock title %}
+
+{% block content %} 
+  <div>
+    <div>update product</div>
+    <div style="padding-top: 5px;" >
+        <form action="/product/update/{{ product.id }}" method="post">
+            <input type="text" name="Price" value="{{ product.Price }}" >
+            <input type="submit" style="padding-left: 4px;" >
+        </form>
+    </div>
+  </div>
+{% endblock content %}
