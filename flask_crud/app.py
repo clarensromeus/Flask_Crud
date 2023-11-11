@@ -104,7 +104,6 @@ def signIn():
                 return redirect("/products")
             except Exception as error:
                 return f"error : {error}"
-
     else:
         return render_template("signin.html")
 
