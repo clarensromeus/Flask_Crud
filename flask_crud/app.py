@@ -189,12 +189,12 @@ def oneProduct(product_id):
             return f"error : {error}"
 
 
-@app.route("/product/update/<int:product_id>", methods=["GET", "POST"])
+@app.route("/product/update/<int:product_id>", methods=["GET", "PATCH"])
 def editProduct(product_id):
 
     product = Product.query.filter_by(id=product_id).first_or_404()
 
-    if request.method == "POST":
+    if request.method == "PATCH":
         if product_id is not None:
             try:
                 Price = request.form.get("Price")
@@ -207,7 +207,7 @@ def editProduct(product_id):
         return render_template("update.html", product=product)
 
 
-@app.route("/product/delete/<int:product_id>")
+@app.route("/product/delete/<int:product_id>", methods=["DELETE"])
 def deleteProduct(product_id):
     if product_id != None:
         try:
