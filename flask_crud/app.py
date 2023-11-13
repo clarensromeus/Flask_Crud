@@ -1,5 +1,5 @@
 # external imports of resources
-from flask import Flask, request, redirect, url_for, render_template, jsonify, session, make_response
+from flask import Flask, request, redirect, url_for, render_template, jsonify, session, make_response, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 import os
@@ -94,8 +94,8 @@ def signIn():
                 is_user_verify = user.verify_password(password)
 
                 if Email != user.Email or is_user_verify is False:
-                    return jsonify({"message": "bad credentials", "success": False})
-
+                    # print this flashing message if user is badly authenticated
+                    flash(message="email or password is wrong")
                 access_token = create_access_token(
                     identity=Email, expires_delta=datetime.time)
 
@@ -123,7 +123,9 @@ def signup():
             if is_user_exist is not None:
                 userFirstname = is_user_exist.Firstname
                 userLastname = is_user_exist.Lastname
-                return f"sorry {userFirstname} {userLastname} you're alrady registered"
+                # flash this message if user already authenticated
+                flash(message=f"sorry user {userFirstname} {
+                      userLastname} already exists")
             else:
                 user = User(Firstname=Firstname, Lastname=Lastname,
                             Email=Email, Password=Password)
@@ -132,7 +134,10 @@ def signup():
                 db.session.add(user)
                 db.session.commit()
 
-            return f"password : {Password} Email : {Email} ", 200
+              # flash a message that user already registered
+            flash(message=f"user {user.Email} is registered with success")
+            return redirect("/signin")
+
     else:
         return render_template("signin.html")
 
